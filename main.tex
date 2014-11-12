@@ -1,0 +1,75 @@
+\documentclass[12pt,a5paper,landscape]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[ngerman]{babel}
+\usepackage[babel]{csquotes}
+
+\usepackage{tikz}
+\usepackage{graphicx}
+
+\usepackage{datatool}
+\usepackage{titling}
+
+%~ \usepackage{MinionPro}
+%~ \usepackage{MyriadPro}
+\renewcommand{\familydefault}{\sfdefault}
+
+\pagenumbering{gobble}
+
+\title{\vspace{-40pt}Teilnahmebescheinigung\\Einführungskurs in Dampfplauderei}
+\subtitle{Einführungskurs in Python}
+%\author{}
+\date{\vspace{-40pt}{\normalsize 30. -- 31. Februar 2014}}
+
+\begin{document}
+
+\DTLloaddb{list}{teilnehmers.csv}
+
+\DTLforeach{list}{\name=name}{%
+
+\thispagestyle{empty}
+
+\maketitle
+
+\def\shadowshift{5pt,-10pt}
+\def\shadowradius{10pt}
+
+\begin{tikzpicture}[remember picture, overlay]
+    \node [shift={(3cm,-3cm)}] at (current page.north west) {%
+		\includegraphics[height=0.15\paperheight]{uni}%
+	};%
+    \node [shift={(-3cm,-3cm)}] at (current page.north east) {%
+		\includegraphics[height=0.15\paperheight]{logo}%
+	};%
+\end{tikzpicture}
+
+\vspace{-40pt}
+
+%~ \begin{center}
+%~ {\Large \underline \name }
+%~ \vspace{1cm}
+%~ {\large hat an einem fünftägigen Einführungskurs der hohen Kunst der Dampfplauderei teilgenommen.}
+%~ \end{center}
+
+\begin{center}
+{\Large \underline \name }
+\end{center}
+
+\section*{Inhalte:}
+
+\begin{small}
+Dummschwätzerei vom Mittelalter bis heute, Schwadronieren in Theorie und Praxis, Zubereitung von Labertaschen im Mikrowellenofen, Klugscheißerei (Exkurs), Erste Hilfe bei oraler Inkontinenz
+\end{small}
+
+\vspace{60pt}
+
+\begin{center}
+\parbox{10cm}{\hrule
+\strut \centering\large \raisebox{-10pt}{\mbox{Prof. Dr. Gandalf der Graue}}}
+\end{center}
+
+\newpage
+}
+\end{document}
